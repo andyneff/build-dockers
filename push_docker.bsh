@@ -45,7 +45,7 @@ while [[ $# > 0 ]]; do
 done
 
 if [[ ${#IMAGES[@]} == 0 ]]; then
-  IMAGES=($(ls -d ${CUR_DIR}/git-lfs_*.dockerfile))
+  IMAGES=($(ls -d ${CUR_DIR}/*.dockerfile))
 fi
 
 #Run docker to build pacakges
@@ -57,7 +57,7 @@ for DOCKER_FILE in "${IMAGES[@]}"; do
     ${CUR_DIR}/build_dockers.bsh ${DOCKER_FILE}
   fi
 
-  $SUDO docker push andyneff/build_git-lfs:${IMAGE_NAME}
+  $SUDO docker push andyneff/git-lfs_dockers:${IMAGE_NAME}
 
 done
 
